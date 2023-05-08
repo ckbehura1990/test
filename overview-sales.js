@@ -14,7 +14,10 @@ import {
 } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Chart } from 'src/components/chart';
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 let cont = 1;
 
 const useChartOptions = () => {
@@ -114,6 +117,8 @@ const useChartOptions = () => {
 export const OverviewSales = (props) => {
   const { chartSeries, sx } = props;
   const chartOptions = useChartOptions();
+  const [age, setAge] = React.useState('');
+
   const [cart, setCart] = useState([ {
     name: 'This year',
     data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20]
@@ -133,8 +138,41 @@ export const OverviewSales = (props) => {
       data: [12*cont, 11*cont, 4*cont, 6*cont, 2*cont, 9*cont, 9*cont, 10*cont, 11*cont, 12*cont, 13*cont, 13*cont]
     }]);
   };
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+    cont = event.target.value;
+    if(cont == 2){
+      cont = 2.3
+    }else if(cont == 3){
+      cont = 3.1
+    }
+    setCart([{
+      name: 'This year',
+      data: [18*cont, 16*cont, 5*cont, 8*cont, 3*cont, 14*cont, 14*cont, 16*cont, 17*cont, 19*cont, 18*cont, 20*cont]
+    },
+    {
+      name: 'Last year',
+      data: [12*cont, 11*cont, 4*cont, 6*cont, 2*cont, 9*cont, 9*cont, 10*cont, 11*cont, 12*cont, 13*cont, 13*cont]
+    }]);
+  };
   return (
     <Card sx={sx}>
+       <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-standard-label">Product</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={age}
+          onChange={handleChange}
+          label="Desktop"
+        >
+          
+          <MenuItem value={1}>Desktop</MenuItem>
+          <MenuItem value={2}>Tablet</MenuItem>
+          <MenuItem value={3}>Phone</MenuItem>
+        </Select>
+      </FormControl>
       <CardHeader
         action={(
           <Button
@@ -149,6 +187,8 @@ export const OverviewSales = (props) => {
           >
             Sync
           </Button>
+
+          
         )}
         title="Sales"
       />
