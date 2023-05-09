@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ArrowPathIcon from '@heroicons/react/24/solid/ArrowPathIcon';
 import ArrowRightIcon from '@heroicons/react/24/solid/ArrowRightIcon';
-import React, { useState } from 'react';
+import React, { useState,forwardRef, useImperativeHandle, useRef } from 'react';
 
 import {
   Button,
@@ -114,10 +114,12 @@ const useChartOptions = () => {
 
 
 
-export const OverviewSales = (props) => {
+export const OverviewSales = forwardRef((props,ref) => {
   const { chartSeries, sx } = props;
   const chartOptions = useChartOptions();
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState('1');
+  const [color, setColor] = React.useState("#6366F1");
+  chartOptions.colors = [color, alpha(color, 0.25)];
 
   const [cart, setCart] = useState([ {
     name: 'This year',
@@ -156,6 +158,29 @@ export const OverviewSales = (props) => {
       data: [12*cont, 11*cont, 4*cont, 6*cont, 2*cont, 9*cont, 9*cont, 10*cont, 11*cont, 12*cont, 13*cont, 13*cont]
     }]);
   };
+
+  const printSomething = (config) =>{
+    console.log('printing from child function',config)
+    chartOptions.colors = [config.w.config.colors[config.dataPointIndex], alpha(config.w.config.colors[config.dataPointIndex], 0.25)];
+   setColor(config.w.config.colors[config.dataPointIndex]);
+
+   let obj = {0 : "Desktop",1:"Tablet",2:"Phone"};
+   setAge(config.dataPointIndex+1);
+
+    cont = cont+0.8;
+    setCart([{
+      name: 'This year',
+      data: [13*cont, 16*cont,15*cont, 8*cont, 13*cont, 14*cont, 14*cont, 16*cont, 17*cont, 9*cont, 18*cont, 20*cont]
+    },
+    {
+      name: 'Last year',
+      data: [7*cont, 11*cont, 4*cont, 6*cont, 2*cont, 9*cont, 9*cont, 10*cont, 11*cont, 2*cont, 15*cont, 13*cont]
+    }]);
+ }
+ 
+ useImperativeHandle(ref, () => ({
+   printSomething: printSomething
+ }));
   return (
     <Card sx={sx}>
        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
@@ -217,7 +242,7 @@ export const OverviewSales = (props) => {
       </CardActions>
     </Card>
   );
-};
+});
 
 OverviewSales.protoTypes = {
   chartSeries: PropTypes.array.isRequired,
