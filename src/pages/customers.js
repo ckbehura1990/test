@@ -10,6 +10,7 @@ import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { CustomersTable } from 'src/sections/customer/customers-table';
 import { CustomersSearch } from 'src/sections/customer/customers-search';
 import { applyPagination } from 'src/utils/apply-pagination';
+import { Chart } from "react-google-charts";
 
 const now = new Date();
 
@@ -24,7 +25,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-carson-darrin.png',
     createdAt: subDays(subHours(now, 7), 1).getTime(),
-    email: 'carson.darrin@devias.io',
+    email: 'carson.darrin@gmail.com',
     name: 'Carson Darrin',
     phone: '304-428-3097'
   },
@@ -38,7 +39,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-fran-perez.png',
     createdAt: subDays(subHours(now, 1), 2).getTime(),
-    email: 'fran.perez@devias.io',
+    email: 'fran.perez@gmail.com',
     name: 'Fran Perez',
     phone: '712-351-5711'
   },
@@ -52,35 +53,35 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-jie-yan-song.png',
     createdAt: subDays(subHours(now, 4), 2).getTime(),
-    email: 'jie.yan.song@devias.io',
+    email: 'jie.yan.song@gmail.com',
     name: 'Jie Yan Song',
     phone: '770-635-2682'
   },
   {
     id: '5e86809283e28b96d2d38537',
     address: {
-      city: 'Madrid',
-      country: 'Spain',
-      name: 'Anika Visser',
+      city: 'Noida',
+      country: 'India',
+      name: 'Demo User',
       street: '4158  Hedge Street'
     },
     avatar: '/assets/avatars/avatar-anika-visser.png',
     createdAt: subDays(subHours(now, 11), 2).getTime(),
-    email: 'anika.visser@devias.io',
-    name: 'Anika Visser',
+    email: 'demo@gmail.com',
+    name: 'Demo User',
     phone: '908-691-3242'
   },
   {
     id: '5e86805e2bafd54f66cc95c3',
     address: {
-      city: 'San Diego',
-      country: 'USA',
-      state: 'California',
-      street: '75247'
+      city: 'Noida',
+      country: 'India',
+      state: 'Delhi',
+      street: ''
     },
     avatar: '/assets/avatars/avatar-miron-vitold.png',
     createdAt: subDays(subHours(now, 7), 3).getTime(),
-    email: 'miron.vitold@devias.io',
+    email: 'miron.vitold@gmail.com',
     name: 'Miron Vitold',
     phone: '972-333-4106'
   },
@@ -94,7 +95,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-penjani-inyene.png',
     createdAt: subDays(subHours(now, 5), 4).getTime(),
-    email: 'penjani.inyene@devias.io',
+    email: 'penjani.inyene@gmail.com',
     name: 'Penjani Inyene',
     phone: '858-602-3409'
   },
@@ -108,7 +109,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-omar-darboe.png',
     createdAt: subDays(subHours(now, 15), 4).getTime(),
-    email: 'omar.darobe@devias.io',
+    email: 'omar.darobe@gmail.com',
     name: 'Omar Darobe',
     phone: '415-907-2647'
   },
@@ -122,7 +123,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
     createdAt: subDays(subHours(now, 2), 5).getTime(),
-    email: 'siegbert.gottfried@devias.io',
+    email: 'siegbert.gottfried@gmail.com',
     name: 'Siegbert Gottfried',
     phone: '702-661-1654'
   },
@@ -136,7 +137,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-iulia-albu.png',
     createdAt: subDays(subHours(now, 8), 6).getTime(),
-    email: 'iulia.albu@devias.io',
+    email: 'iulia.albu@gmail.com',
     name: 'Iulia Albu',
     phone: '313-812-8947'
   },
@@ -150,7 +151,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-nasimiyu-danai.png',
     createdAt: subDays(subHours(now, 1), 9).getTime(),
-    email: 'nasimiyu.danai@devias.io',
+    email: 'nasimiyu.danai@gmail.com',
     name: 'Nasimiyu Danai',
     phone: '801-301-7894'
   }
@@ -194,13 +195,69 @@ const Page = () => {
     },
     []
   );
-
+  const data = [
+    ["From", "To", "Weight"],
+    ["Brazil", "Portugal", 5],
+    ["Brazil", "France", 1],
+    ["Brazil", "Spain", 1],
+    ["Brazil", "England", 1],
+    ["Canada", "Portugal", 1],
+    ["Canada", "France", 5],
+    ["Canada", "England", 1],
+    ["Mexico", "Portugal", 1],
+    ["Mexico", "France", 1],
+    ["Mexico", "Spain", 5],
+    ["Mexico", "England", 1],
+    ["USA", "Portugal", 1],
+    ["USA", "France", 1],
+    ["USA", "Spain", 1],
+    ["USA", "England", 5],
+    ["Portugal", "Angola", 2],
+    ["Portugal", "Senegal", 1],
+    ["Portugal", "Morocco", 1],
+    ["Portugal", "South Africa", 3],
+    ["France", "Angola", 1],
+    ["France", "Senegal", 3],
+    ["France", "Mali", 3],
+    ["France", "Morocco", 3],
+    ["France", "South Africa", 1],
+    ["Spain", "Senegal", 1],
+    ["Spain", "Morocco", 3],
+    ["Spain", "South Africa", 1],
+    ["England", "Angola", 1],
+    ["England", "Senegal", 1],
+    ["England", "Morocco", 2],
+    ["England", "South Africa", 7],
+    ["South Africa", "China", 5],
+    ["South Africa", "India", 1],
+    ["South Africa", "Japan", 3],
+    ["Angola", "China", 5],
+    ["Angola", "India", 1],
+    ["Angola", "Japan", 3],
+    ["Senegal", "China", 5],
+    ["Senegal", "India", 1],
+    ["Senegal", "Japan", 3],
+    ["Mali", "China", 5],
+    ["Mali", "India", 1],
+    ["Mali", "Japan", 3],
+    ["Morocco", "China", 5],
+    ["Morocco", "India", 1],
+    ["Morocco", "Japan", 3],
+  ];
+  
+  const options = {
+    sankey: {
+      link: { color: { fill: "#d799ae" } },
+      node: {
+        colors: ["#a61d4c"],
+        label: { color: "#871b47" },
+      },
+    },
+  };
   return (
     <>
       <Head>
-        <title>
-          Customers | Devias Kit
-        </title>
+       
       </Head>
       <Box
         component="main"
@@ -273,6 +330,13 @@ const Page = () => {
               page={page}
               rowsPerPage={rowsPerPage}
               selected={customersSelection.selected}
+            />
+            <Chart
+              chartType="Sankey"
+              width="100%"
+              height="500px"
+              data={data}
+              options={options}
             />
           </Stack>
         </Container>

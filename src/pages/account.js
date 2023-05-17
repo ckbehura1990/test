@@ -7,9 +7,7 @@ import { AccountProfileDetails } from 'src/sections/account/account-profile-deta
 const Page = () => (
   <>
     <Head>
-      <title>
-        Account | Devias Kit
-      </title>
+      
     </Head>
     <Box
       component="main"

@@ -70,9 +70,7 @@ const companies = [
 const Page = () => (
   <>
     <Head>
-      <title>
-        Companies | Devias Kit
-      </title>
+      
     </Head>
     <Box
       component="main"

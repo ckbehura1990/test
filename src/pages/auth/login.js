@@ -25,7 +25,7 @@ const Page = () => {
   const [method, setMethod] = useState('email');
   const formik = useFormik({
     initialValues: {
-      email: 'demo@devias.io',
+      email: 'demo@gmail.com',
       password: 'Password123!',
       submit: null
     },
@@ -70,9 +70,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Login | Devias Kit
-        </title>
+        
       </Head>
       <Box
         sx={{
@@ -187,15 +185,7 @@ const Page = () => {
                 >
                   Skip authentication
                 </Button>
-                <Alert
-                  color="primary"
-                  severity="info"
-                  sx={{ mt: 3 }}
-                >
-                  <div>
-                    You can use <b>demo@devias.io</b> and password <b>Password123!</b>
-                  </div>
-                </Alert>
+                
               </form>
             )}
             {method === 'phoneNumber' && (

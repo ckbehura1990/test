@@ -47,9 +47,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Register | Devias Kit
-        </title>
+       
       </Head>
       <Box
         sx={{
