@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import ArrowPathIcon from '@heroicons/react/24/solid/ArrowPathIcon';
 import ArrowRightIcon from '@heroicons/react/24/solid/ArrowRightIcon';
+import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
+
 import React, { useState,forwardRef, useImperativeHandle, useRef } from 'react';
 
 import {
@@ -217,6 +219,16 @@ export const OverviewSales = forwardRef((props,ref) => {
         )}
         title="Sales"
       />
+       <Button
+                    color="inherit"
+                    startIcon={(
+                      <SvgIcon fontSize="small">
+                        <ArrowDownOnSquareIcon />
+                      </SvgIcon>
+                    )}
+                  >
+                    Export to Excel
+                  </Button>
       <CardContent>
         <Chart
           height={350}

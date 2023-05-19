@@ -95,16 +95,7 @@ const Page = () => (
                 direction="row"
                 spacing={1}
               >
-                <Button
-                  color="inherit"
-                  startIcon={(
-                    <SvgIcon fontSize="small">
-                      <ArrowUpOnSquareIcon />
-                    </SvgIcon>
-                  )}
-                >
-                  Import
-                </Button>
+               
                 <Button
                   color="inherit"
                   startIcon={(
@@ -113,7 +104,7 @@ const Page = () => (
                     </SvgIcon>
                   )}
                 >
-                  Export
+                  Export to Excel
                 </Button>
               </Stack>
             </Stack>

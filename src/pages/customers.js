@@ -25,7 +25,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-carson-darrin.png',
     createdAt: subDays(subHours(now, 7), 1).getTime(),
-    email: 'carson.darrin@gmail.com',
+    email: 'carson.darrin@devias.io',
     name: 'Carson Darrin',
     phone: '304-428-3097'
   },
@@ -39,7 +39,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-fran-perez.png',
     createdAt: subDays(subHours(now, 1), 2).getTime(),
-    email: 'fran.perez@gmail.com',
+    email: 'fran.perez@devias.io',
     name: 'Fran Perez',
     phone: '712-351-5711'
   },
@@ -53,35 +53,35 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-jie-yan-song.png',
     createdAt: subDays(subHours(now, 4), 2).getTime(),
-    email: 'jie.yan.song@gmail.com',
+    email: 'jie.yan.song@devias.io',
     name: 'Jie Yan Song',
     phone: '770-635-2682'
   },
   {
     id: '5e86809283e28b96d2d38537',
     address: {
-      city: 'Noida',
-      country: 'India',
-      name: 'Demo User',
+      city: 'Madrid',
+      country: 'Spain',
+      name: 'Anika Visser',
       street: '4158  Hedge Street'
     },
     avatar: '/assets/avatars/avatar-anika-visser.png',
     createdAt: subDays(subHours(now, 11), 2).getTime(),
-    email: 'demo@gmail.com',
-    name: 'Demo User',
+    email: 'anika.visser@devias.io',
+    name: 'Anika Visser',
     phone: '908-691-3242'
   },
   {
     id: '5e86805e2bafd54f66cc95c3',
     address: {
-      city: 'Noida',
-      country: 'India',
-      state: 'Delhi',
-      street: ''
+      city: 'San Diego',
+      country: 'USA',
+      state: 'California',
+      street: '75247'
     },
     avatar: '/assets/avatars/avatar-miron-vitold.png',
     createdAt: subDays(subHours(now, 7), 3).getTime(),
-    email: 'miron.vitold@gmail.com',
+    email: 'miron.vitold@devias.io',
     name: 'Miron Vitold',
     phone: '972-333-4106'
   },
@@ -95,7 +95,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-penjani-inyene.png',
     createdAt: subDays(subHours(now, 5), 4).getTime(),
-    email: 'penjani.inyene@gmail.com',
+    email: 'penjani.inyene@devias.io',
     name: 'Penjani Inyene',
     phone: '858-602-3409'
   },
@@ -109,7 +109,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-omar-darboe.png',
     createdAt: subDays(subHours(now, 15), 4).getTime(),
-    email: 'omar.darobe@gmail.com',
+    email: 'omar.darobe@devias.io',
     name: 'Omar Darobe',
     phone: '415-907-2647'
   },
@@ -123,7 +123,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
     createdAt: subDays(subHours(now, 2), 5).getTime(),
-    email: 'siegbert.gottfried@gmail.com',
+    email: 'siegbert.gottfried@devias.io',
     name: 'Siegbert Gottfried',
     phone: '702-661-1654'
   },
@@ -137,7 +137,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-iulia-albu.png',
     createdAt: subDays(subHours(now, 8), 6).getTime(),
-    email: 'iulia.albu@gmail.com',
+    email: 'iulia.albu@devias.io',
     name: 'Iulia Albu',
     phone: '313-812-8947'
   },
@@ -151,7 +151,7 @@ const data = [
     },
     avatar: '/assets/avatars/avatar-nasimiyu-danai.png',
     createdAt: subDays(subHours(now, 1), 9).getTime(),
-    email: 'nasimiyu.danai@gmail.com',
+    email: 'nasimiyu.danai@devias.io',
     name: 'Nasimiyu Danai',
     phone: '801-301-7894'
   }
@@ -195,8 +195,13 @@ const Page = () => {
     },
     []
   );
-  const data = [
+
+   const data = [
     ["From", "To", "Weight"],
+    ["USA", "Portugal", 1],
+    ["USA", "France", 1],
+    ["USA", "Spain", 1],
+    ["USA", "England", 5],
     ["Brazil", "Portugal", 5],
     ["Brazil", "France", 1],
     ["Brazil", "Spain", 1],
@@ -208,10 +213,7 @@ const Page = () => {
     ["Mexico", "France", 1],
     ["Mexico", "Spain", 5],
     ["Mexico", "England", 1],
-    ["USA", "Portugal", 1],
-    ["USA", "France", 1],
-    ["USA", "Spain", 1],
-    ["USA", "England", 5],
+    
     ["Portugal", "Angola", 2],
     ["Portugal", "Senegal", 1],
     ["Portugal", "Morocco", 1],
@@ -245,19 +247,40 @@ const Page = () => {
     ["Morocco", "Japan", 3],
   ];
   
-  const options = {
+   const options1 = {
     sankey: {
+      iterations: 0,
       link: { color: { fill: "#d799ae" } },
       node: {
         colors: ["#a61d4c"],
         label: { color: "#871b47" },
+        
       },
     },
   };
+  var colors = ['#a6cee3', '#b2df8a', '#cab2d6', '#fdbf6f', '#cab2d6', '#cab2d6', '#cab2d6'];
+
+  const options = {
+    //width: 500,
+    sankey: {
+      iterations: 0,
+      node: {
+        //colors: colors
+      },
+      link: {
+        colorMode: 'source',
+        colors: colors
+      }
+    }
+  };
+  
+
   return (
     <>
       <Head>
-       
+        <title>
+          Customers | Devias Kit
+        </title>
       </Head>
       <Box
         component="main"
@@ -282,16 +305,7 @@ const Page = () => {
                   direction="row"
                   spacing={1}
                 >
-                  <Button
-                    color="inherit"
-                    startIcon={(
-                      <SvgIcon fontSize="small">
-                        <ArrowUpOnSquareIcon />
-                      </SvgIcon>
-                    )}
-                  >
-                    Import
-                  </Button>
+                 
                   <Button
                     color="inherit"
                     startIcon={(
@@ -300,7 +314,7 @@ const Page = () => {
                       </SvgIcon>
                     )}
                   >
-                    Export
+                    Export to Excel
                   </Button>
                 </Stack>
               </Stack>
